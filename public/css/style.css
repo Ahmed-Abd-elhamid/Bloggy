@@ -1,0 +1,26 @@
+* {
+ box-sizing: border-box;
+}
+*:before,
+*:after {
+ box-sizing: border-box;
+}
+html,
+body {
+ height: 100%;
+ position: relative;
+}
+
+footer {
+  /* position: absolute; */
+  bottom: 0;
+  width: 100%;
+}
+
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  background-image:url('https://singularityhub.com/wp-content/uploads/2018/02/innovation-creative-problem-solving-colorful-hands-up-shutterstock-266954309-900x506.png');
+   width:100%;
+}

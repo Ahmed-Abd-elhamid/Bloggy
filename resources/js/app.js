@@ -30,9 +30,3 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
-
-   var msg = '{{Session::get('alert')}}';
-   var exist = '{{Session::has('alert')}}';
-   if(exist){
-     alert(msg);
-   }

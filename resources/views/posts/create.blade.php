@@ -9,8 +9,7 @@
 @endsection
 
 @section('body')
-<div class="container m-5" style="background-image: url('../images/consultation.jpg');">
-  <div class="row justify-content-md-left">
+<div class="container m-5 bg-dark text-white p-5">
 <form method="POST" action="{{route('posts.store')}}">
     @csrf
     <div class="form-group">
@@ -41,7 +40,6 @@
 
     <button type="submit" class="btn btn-primary">Post</button>
   </form>
-</div>
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

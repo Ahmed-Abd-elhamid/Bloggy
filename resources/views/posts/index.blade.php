@@ -12,11 +12,12 @@
 
 <div class="container m-5">
       <div class="container justify-content">
-          <table class="table table-primary text-center ">
+          <table class="table table-primary text-center">
             <thead class="thead-dark">
                 <tr>
                   <th scope="col" class="align-middle h5">ID</th>
                   <th scope="col" class="align-middle h5">Title</th>
+                  <th scope="col" class="align-middle h5">Slug</th>
                   <th scope="col" class="align-middle h5">Description</th>
                   <th scope="col" class="align-middle h5">category</th>
                   <th scope="col" class="align-middle h5">User Name</th>
@@ -28,7 +29,8 @@
                 @foreach($posts as $post)
                 <tr>
                 <th scope="row" class="align-middle">{{ $post->id }}</th>
-                  <td class="align-middle">{{ $post->title }}</td>
+                <td class="align-middle">{{ $post->title }}</td>
+                  <td class="align-middle">{{ $post->slug }}</td>
                   <td class="align-middle">{{ $post->description }}</td>
                   <td class="align-middle">{{ $post->category}}</td>
                   <td class="align-middle">{{ $post->created_at}}</td>
@@ -55,6 +57,7 @@
               @endforeach
               </tbody>
             </table>
+            {!! $posts->render() !!}
             <a href="{{route('posts.create')}}" class="btn btn-success mb-5">Create Post</a>
       </div>
 

@@ -14,7 +14,8 @@ class PostController extends Controller
 
     public function index (){
 
-      $posts = Post::all();
+      $posts = Post::paginate(2);
+
       return view('posts.index', [
           'posts' => $posts,
       ]);
@@ -47,6 +48,9 @@ class PostController extends Controller
     }
 
     public function store(PostRequest $request){
+
+      $validatedData = $request->validate(['title'=>'unique:posts']);
+
       Post::create([
         'title' => $request->title,
         'description' => $request->description,
