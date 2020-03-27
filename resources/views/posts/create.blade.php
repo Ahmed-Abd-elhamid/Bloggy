@@ -26,11 +26,10 @@
 
     <div class="form-group">
       <label for="exampleInputPassword1">Categories</label>
-      <select name="category" class="form-control">
-          <option value="art">Art</option>
-          <option value="social">Social</option>
-          <option value="sport">Sport</option>
-        </select>
+      <br>
+          <input type="radio" name="category" value="art"> Art
+          <input type="radio" name="category" value="social"> Social
+          <input type="radio" name="category" value="sport"> Sport
     </div>
 
     <div class="form-group">

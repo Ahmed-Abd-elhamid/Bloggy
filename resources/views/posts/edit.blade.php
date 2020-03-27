@@ -11,7 +11,8 @@
 @section('body')
 <div class="container m-5" style="background-image: url('../images/consultation.jpg');">
   <div class="row justify-content-md-left">
-<form method="GET" action="{{route('posts.edit',['post' => $post->id])}}">
+<form method="POST" action="{{route('posts.update',['post' => $post->id])}}">
+    @method('PUT')
     @csrf
     <div class="form-group">
       <label >Title</label>
@@ -26,11 +27,10 @@
 
     <div class="form-group">
       <label for="exampleInputPassword1">Categories</label>
-      <select name="category" class="form-control" value="{{$post->category}}">
-          <option value="art">Art</option>
-          <option value="social">Social</option>
-          <option value="sport">Sport</option>
-        </select>
+      <br>
+          <input type="radio" name="category" value="art"> Art
+          <input type="radio" name="category" value="social"> Social
+          <input type="radio" name="category" value="sport"> Sport
     </div>
 
     <div class="form-group">

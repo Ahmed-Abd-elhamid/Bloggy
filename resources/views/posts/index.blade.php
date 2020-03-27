@@ -11,42 +11,42 @@
 @section('body')
 <div class="container m-5">
       <div class="container m-5">
-          <table class="table table-primary text-center">
+          <table class="table table-primary text-center ">
             <thead class="thead-dark">
                 <tr>
-                  <th scope="col h3">ID</th>
-                  <th scope="col h3">Title</th>
-                  <th scope="col h3">Description</th>
-                  <th scope="col h3">category</th>
-                  <th scope="col h3">User Name</th>
-                  <th scope="col h3">Created At</th>
-                  <th scope="col h3" colspan="3">Actions</th>
+                  <th scope="col" class="align-middle h5">ID</th>
+                  <th scope="col" class="align-middle h5">Title</th>
+                  <th scope="col" class="align-middle h5">Description</th>
+                  <th scope="col" class="align-middle h5">category</th>
+                  <th scope="col" class="align-middle h5">User Name</th>
+                  <th scope="col" class="align-middle h5">Created At</th>
+                  <th scope="col" class="align-middle h5" colspan="3">Actions</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody >
                 @foreach($posts as $post)
                 <tr>
-                <th scope="row">{{ $post->id }}</th>
-                  <td>{{ $post->title }}</td>
-                  <td>{{ $post->description }}</td>
-                  <td>{{ $post->category}}</td>
-                  <td>{{ $post->created_at}}</td>
-                  <td>{{ $post->user->name}}</td>
+                <th scope="row" class="align-middle">{{ $post->id }}</th>
+                  <td class="align-middle">{{ $post->title }}</td>
+                  <td class="align-middle">{{ $post->description }}</td>
+                  <td class="align-middle">{{ $post->category}}</td>
+                  <td class="align-middle">{{ $post->created_at}}</td>
+                  <td class="align-middle">{{ $post->user->name}}</td>
 
-                <td><form method="GET" action="{{route('posts.show',['post' => $post->id])}}">
+                <td class="align-middle"><form method="GET" action="{{route('posts.show',['post' => $post->id])}}">
                   @csrf
 
                   <button type="submit" class="btn btn-primary">Post Details</button>
                 </form></td>
 
-                <td><form method="POST" action="{{route('posts.destroy',['post' => $post->id])}}">
+                <td  class="align-middle"><form method="POST" action="{{route('posts.destroy',['post' => $post->id])}}">
                   @method('DELETE')
                   @csrf
                 <button type="submit" class="btn btn-danger">Delete Post</button>
                 </form></td>
 
-                <td><form method="POST" action="{{route('posts.update',['post' => $post->id])}}">
-                  @method('PUT')
+                <td  class="align-middle"><form method="GET" action="{{route('posts.edit',['post' => $post->id])}}">
+                  @method('GET')
                   @csrf
                 <button type="submit" class="btn btn-success">Update Post</button>
                 </form></td>
