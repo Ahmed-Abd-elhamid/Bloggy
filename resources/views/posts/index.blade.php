@@ -33,8 +33,9 @@
                   <td class="align-middle">{{ $post->slug }}</td>
                   <td class="align-middle">{{ $post->description }}</td>
                   <td class="align-middle">{{ $post->category}}</td>
-                  <td class="align-middle">{{ $post->created_at}}</td>
                   <td class="align-middle">{{ $post->user->name}}</td>
+                  <td class="align-middle">{{ $post->created_at}}</td>
+
 
                 <td class="align-middle"><form method="GET" action="{{route('posts.show',['post' => $post->id])}}">
                   @csrf
@@ -42,15 +43,15 @@
                   <button type="submit" class="btn btn-primary">Post Details</button>
                 </form></td>
 
-                <td  class="align-middle"><form method="POST" action="{{route('posts.destroy',['post' => $post->id])}}">
+                <td  class="align-middle"><form method="POST" action="{{route('posts.destroy',['post' => $post->id])}}" id="delet">
                   @method('DELETE')
                   @csrf
-                <button type="submit" class="btn btn-danger">Delete Post</button>
+                <button type="button" class="del btn btn-danger">Delete Post</button>
                 </form></td>
 
                 <td  class="align-middle"><form method="GET" action="{{route('posts.edit',['post' => $post->id])}}">
                   @csrf
-                <button type="submit" class="btn btn-success">Update Post</button>
+                <button type="submit" class="up btn btn-success">Update Post</button>
                 </form></td>
 
               </tr>
