@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['middleware'=>'auth'], function(){
 
 Route::get('/posts', 'PostController@index')->name('posts.index');
 
@@ -31,3 +32,9 @@ Route::delete('/posts/{post}', 'PostController@destroy')->name('posts.destroy');
 Route::put('/posts/{post}', 'PostController@update')->name('posts.update');
 
 Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
+
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -19,9 +19,7 @@
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Description</label>
-      <textarea name="description" class="form-control">
-
-      </textarea>
+      <textarea name="description" class="form-control"></textarea>
     </div>
 
     <div class="form-group">
@@ -44,6 +42,15 @@
     <button type="submit" class="btn btn-primary">Post</button>
   </form>
 </div>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 </div>
 @endsection
 

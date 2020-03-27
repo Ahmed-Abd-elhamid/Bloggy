@@ -9,8 +9,9 @@
 @endsection
 
 @section('body')
+
 <div class="container m-5">
-      <div class="container m-5">
+      <div class="container justify-content">
           <table class="table table-primary text-center ">
             <thead class="thead-dark">
                 <tr>
@@ -46,7 +47,6 @@
                 </form></td>
 
                 <td  class="align-middle"><form method="GET" action="{{route('posts.edit',['post' => $post->id])}}">
-                  @method('GET')
                   @csrf
                 <button type="submit" class="btn btn-success">Update Post</button>
                 </form></td>

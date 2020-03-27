@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-<title>Create Post</title>
+<title>Edit Post</title>
 @endsection
 
 @section('head')
@@ -9,6 +9,7 @@
 @endsection
 
 @section('body')
+
 <div class="container m-5" style="background-image: url('../images/consultation.jpg');">
   <div class="row justify-content-md-left">
 <form method="POST" action="{{route('posts.update',['post' => $post->id])}}">
@@ -20,9 +21,7 @@
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Description</label>
-      <textarea name="description" class="form-control">
-        {{$post->description}}
-      </textarea>
+      <textarea name="description" class="form-control">{{$post->description}}</textarea>
     </div>
 
     <div class="form-group">
@@ -47,7 +46,17 @@
 
     <button type="submit" class="btn btn-primary">Update</button>
   </form>
+
 </div>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 </div>
 @endsection
 

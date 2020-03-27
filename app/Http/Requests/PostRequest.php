@@ -24,7 +24,9 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required | min:4',
+            'description' => 'required | min:20',
+            'category' => 'required'
         ];
     }
 }

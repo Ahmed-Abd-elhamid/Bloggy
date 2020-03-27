@@ -20,7 +20,7 @@ class PostController extends Controller
       ]);
     }
 
-      public function show(PostRequest $request){
+      public function show(Request $request){
           $postId = $request->post;
           $post = Post::find($postId);
 
@@ -29,7 +29,7 @@ class PostController extends Controller
           ]);
       }
 
-      public function destroy(PostRequest $request){
+      public function destroy(Request $request){
           $postId = $request->post;
           Post::destroy($postId);
 
@@ -58,8 +58,7 @@ class PostController extends Controller
 
     }
 
-    public function  edit(PostRequest $request){
-
+    public function  edit(Request $request){
       $users = User::all();
       $postId = $request->post;
       $post = Post::find($postId);
@@ -78,7 +77,7 @@ class PostController extends Controller
       $input = $request->all();
       $post->fill($input)->save();
 
-      return redirect()->route('posts.index');
+      return redirect()->route('posts.index')->with('alert', 'Updated!');
 
     }
 }
