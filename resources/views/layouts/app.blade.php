@@ -9,6 +9,7 @@
 
     @yield('title')
 
+	<link rel="shortcut icon" href="/icons/icon-48x48.png?v=9f5ad2623a4f88040540963d2f9e4368">
     <!-- Scripts -->
     <script type="text/javascript" src="{{ asset('js/script.js') }}" defer></script>
 
@@ -31,8 +32,6 @@
         <main class="py-4" style="opacity: 0.88;">
           @yield('body')
         </main>
-          @yield('foot')
-
     </div>
 </body>
 </html>

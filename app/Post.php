@@ -15,6 +15,10 @@ class Post extends Model
       return $this->belongsTo('App\User');
     }
 
+    // public function user(){
+    //   return  $this->hasOne('App\User');
+    // }
+
     public function sluggable()
     {
     return [
