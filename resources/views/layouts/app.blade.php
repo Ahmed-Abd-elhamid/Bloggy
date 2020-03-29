@@ -9,8 +9,7 @@
 
     @yield('title')
 
-	<link rel="shortcut icon" href="/icons/icon-48x48.png?v=9f5ad2623a4f88040540963d2f9e4368">
-    <!-- Scripts -->
+    <link href="https://image.flaticon.com/icons/svg/504/504434.svg" rel="icon" type="image/x-icon" />    <!-- Scripts -->
     <script type="text/javascript" src="{{ asset('js/script.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -39,7 +38,7 @@
 
         if(exist){
           alert(msg);}
-          
+
     </script>
 </body>
 </html>

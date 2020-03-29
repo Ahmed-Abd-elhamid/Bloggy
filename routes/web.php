@@ -17,8 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/home', 'HomeController@index')->name('home.index');
-
 Route::group(['middleware'=>'auth'], function(){
 
 Route::get('/posts', 'PostController@index')->name('posts.index');
@@ -37,8 +35,6 @@ Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
 
 });
 
-Auth::routes();
-
 
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
@@ -49,3 +45,6 @@ Route::get('google', function () {
 
 Route::get('auth/google', 'Auth\LoginController@redirectToGoogle');
 Route::get('auth/google/callback', 'Auth\LoginController@handleGoogleCallback');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

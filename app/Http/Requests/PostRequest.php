@@ -26,7 +26,8 @@ class PostRequest extends FormRequest
         return [
             'title' => 'required | min:3',
             'description' => 'required | min:10',
-            'category' => 'required'
+            'user_id' => 'exists:App\User,id',
+            'category' => 'required',
         ];
     }
 }

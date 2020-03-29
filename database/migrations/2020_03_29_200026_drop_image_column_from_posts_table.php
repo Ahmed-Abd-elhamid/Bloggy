@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ModifyPostTable extends Migration
+class DropImageColumnFromPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class ModifyPostTable extends Migration
      */
     public function up()
     {
-      Schema::table('posts', function (Blueprint $table) {
-          $table -> unsignedBigInteger('image_id')->nullable;
-      });
-
-      Schema::table('posts', function (Blueprint $table) {
-          $table -> foreign('image_id')->reference("id")->on('images');
-      });
+        Schema::table('posts', function (Blueprint $table) {
+            $table->dropColumn('image');
+          });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -28,6 +25,8 @@ class ModifyPostTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('posts', function (Blueprint $table) {
+            //
+        });
     }
 }

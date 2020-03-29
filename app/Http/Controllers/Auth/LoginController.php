@@ -72,26 +72,28 @@ class LoginController extends Controller
    public function handleGoogleCallback()
    {
      $this->apiLogin('google', 'auth/google');
-
    }
 
    private function apiLogin($drive, $catchUrl = null){
+
      try {
 
          $user = Socialite::driver($drive)->user();
          $finduser = User::where('name', $user->name)->first();
 
          if($finduser){
-             Auth::login($finduser);
-            return redirect('/home');
-
-         }else if ($user->name && $user->email && $user->id){
-             $newUser = User::create([
-                 'name' => $user->name,
-                 'email' => $user->email,
-                 'password'=> Hash::make($user->id),]);
-             Auth::login($newUser);
-             return redirect()->back();
+           Auth::login($finduser);
+           return redirect()->to('/home');
+         }else if (!$user->name || !$user->email || !$user->id){
+           dd("Some data is missing, you can access with ".$drive);
+           return redirect()->back();
+         }else{
+           $newUser = User::create([
+               'name' => $user->name,
+               'email' => $user->email,
+               'password'=> Hash::make($user->id),]);
+           Auth::login($newUser);
+           return redirect()->to('/home');
          }
 
      } catch (Exception $e) {

@@ -1,11 +1,11 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-primary bg-primary shadow-sm">
         <div class="container">
-            <a class="navbar-brand border border-dark rounded-pill"  href="{{route('welcome')}}">
-                <img src="http://cairopulse.net/wp-content/uploads/2017/07/Diwan-Logo-Transparent-Background.png" height="55" alt="mdb logo">
+            <a class="navbar-brand border border-dark rounded"  href="{{route('welcome')}}">
+                <img src="https://image.flaticon.com/icons/svg/504/504434.svg" height="60" width="70" alt="mdb logo">
             </a>
-            <a class="navbar-brand text-dark border border-dark rounded-pill" href="{{route('posts.index')}}">
-                <img src="http://clipart-library.com/images/8iAbMjMbT.gif" height="55" width="120" alt="mdb logo">
+            <a class="navbar-brand text-dark border border-dark rounded" href="{{route('posts.index')}}">
+                <img src="https://image.flaticon.com/icons/svg/1792/1792024.svg" height="60" width="70" alt="mdb logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>

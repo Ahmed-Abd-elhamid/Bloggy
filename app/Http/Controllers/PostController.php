@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Carbon\Carbon;
 use App\Post;
 use App\User;
 use App\Image;
@@ -34,7 +35,7 @@ class PostController extends Controller
 
           Post::destroy($request->post);
 
-          return redirect()->back()->with('alert', 'Deleted!');
+          return redirect()->back()->with('warning','Delected successfully!');;
         }
 
 
@@ -78,7 +79,7 @@ class PostController extends Controller
       $post = Post::find($request->post);
       $post->fill($request->all())->save();
 
-      return redirect()->route('posts.index')->with('alert', 'Updated!');
+      return redirect()->route('posts.index')->with('success','Item created successfully!');
 
     }
 
