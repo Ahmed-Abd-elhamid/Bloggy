@@ -11,6 +11,7 @@ use Exception;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 
+
 class LoginController extends Controller
 {
     /*
@@ -58,70 +59,47 @@ class LoginController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function handleProviderCallback()
-  {
-    try {
+   public function handleProviderCallback()
+   {
+     $this->apiLogin('github');
+   }
 
-      $user = Socialite::driver('github')->user();
-      // dd($user);
-      $finduser = User::where('name', $user->name)->first();
+   public function redirectToGoogle()
+   {
+     return Socialite::driver('google')->redirect();
+   }
 
-      if($finduser){
+   public function handleGoogleCallback()
+   {
+     $this->apiLogin('google', 'auth/google');
 
-          Auth::login($finduser);
+   }
 
-         return redirect('/home');
+   private function apiLogin($drive, $catchUrl = null){
+     try {
 
-      }else if ($user->name && $user->email && $user->id){
-          $newUser = User::create([
-              'name' => $user->name,
-              'email' => $user->email,
-              'password'=> Hash::make($user->id),
-          ]);
+         $user = Socialite::driver($drive)->user();
+         $finduser = User::where('name', $user->name)->first();
 
-          Auth::login($newUser);
+         if($finduser){
+             Auth::login($finduser);
+            return redirect('/home');
 
-          return redirect()->back();
-      }
-    }catch (Exception $e) {
+         }else if ($user->name && $user->email && $user->id){
+             $newUser = User::create([
+                 'name' => $user->name,
+                 'email' => $user->email,
+                 'password'=> Hash::make($user->id),]);
+             Auth::login($newUser);
+             return redirect()->back();
+         }
 
-      return redirect()->back();
-          }
-      // $user->token;
-  }
-
-  public function redirectToGoogle()
-{
-    return Socialite::driver('google')->redirect();
-}
-
-public function handleGoogleCallback()
-{
-    try {
-
-        $user = Socialite::driver('google')->user();
-        $finduser = User::where('name', $user->name)->first();
-
-        if($finduser){
-
-            Auth::login($finduser);
-
-           return redirect('/home');
-
-        }else if ($user->name && $user->email && $user->id){
-            $newUser = User::create([
-                'name' => $user->name,
-                'email' => $user->email,
-                'password'=> Hash::make($user->id),
-            ]);
-
-            Auth::login($newUser);
-
-            return redirect()->back();
-        }
-
-    } catch (Exception $e) {
-        return redirect('auth/google');
-    }
-}
+     } catch (Exception $e) {
+       if($catchUrl){
+         return redirect($catchUrl);
+       }else{
+         return redirect()->back();
+       }
+     }
+   }
 }

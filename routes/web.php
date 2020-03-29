@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::get('/home', 'HomeController@index')->name('home.index');
 
 Route::group(['middleware'=>'auth'], function(){
 
@@ -37,7 +39,6 @@ Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');

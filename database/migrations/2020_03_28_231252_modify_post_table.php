@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ModifyPostsTable extends Migration
+class ModifyPostTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class ModifyPostsTable extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('posts', function (Blueprint $table) {
-            $table -> Text('slug')->nullable;
-            $table -> longText('image')->nullable;
+      Schema::table('posts', function (Blueprint $table) {
+          $table -> unsignedBigInteger('image_id')->nullable;
+      });
 
-        });
+      Schema::table('posts', function (Blueprint $table) {
+          $table -> foreign('image_id')->reference("id")->on('images');
+      });
     }
-
     /**
      * Reverse the migrations.
      *

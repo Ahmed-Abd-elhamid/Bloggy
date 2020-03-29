@@ -10,8 +10,8 @@
 
 @section('body')
 <div class="container m-5 bg-dark text-white p-5">
-<form method="POST" action="{{route('posts.store')}}">
-    @csrf
+<form method="POST" action="{{route('posts.store')}}" enctype="multipart/form-data">
+  {{ csrf_field() }}
     <div class="form-group">
       <label >Title</label>
       <input name="title" type="text" class="form-control" aria-describedby="emailHelp">
@@ -37,6 +37,13 @@
         @endforeach
         </select>
     </div>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Image</label>
+      <input type="file" class="form-control" name="image"/>
+    </div>
+
+
 
     <button type="submit" class="btn btn-primary">Post</button>
   </form>

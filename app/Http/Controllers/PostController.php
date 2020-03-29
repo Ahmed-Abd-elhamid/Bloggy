@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Post;
 use App\User;
+use App\Image;
 Use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
 
 class PostController extends Controller
 {
@@ -14,40 +18,37 @@ class PostController extends Controller
 
     public function index (){
 
-      $posts = Post::paginate(2);
-
       return view('posts.index', [
-          'posts' => $posts,
+          'posts' => Post::paginate(2),
       ]);
     }
 
       public function show(Request $request){
-          $postId = $request->post;
-          $post = Post::find($postId);
 
           return view('posts.show',[
-              'post' => $post,
+              'post' => Post::find($request->post),
           ]);
       }
 
       public function destroy(Request $request){
-          $postId = $request->post;
-          Post::destroy($postId);
+
+          Post::destroy($request->post);
 
           return redirect()->back()->with('alert', 'Deleted!');
-}
+        }
 
 
 
     public function create(){
-      $users = User::all();
 
       return view('posts.create', [
-        'users' => $users
+        'users' => User::all()
       ]);
     }
 
     public function store(PostRequest $request){
+
+      $image = $this->storeImage($request);
 
       $validatedData = $request->validate(['title'=>'unique:posts']);
 
@@ -56,6 +57,7 @@ class PostController extends Controller
         'description' => $request->description,
         'category' => $request->category,
         'user_id' => $request->user_id,
+        'image_id' => $image->id,
       ]);
 
       return redirect()->route('posts.index');
@@ -63,25 +65,34 @@ class PostController extends Controller
     }
 
     public function  edit(Request $request){
-      $users = User::all();
-      $postId = $request->post;
-      $post = Post::find($postId);
 
       return view('posts.edit',[
-          'post' => $post,
-          'users' => $users,
+          'post' => Post::find($request->post),
+          'users' => User::all(),
       ]);
 
     }
 
     public function update(PostRequest $request){
 
-      $postId = $request->post;
-      $post = Post::find($postId);
-      $input = $request->all();
-      $post->fill($input)->save();
+      $post = Post::find($request->post);
+      $post->fill($request->all())->save();
 
       return redirect()->route('posts.index')->with('alert', 'Updated!');
 
+    }
+
+    private function storeImage($request){
+      $cover = $request->file('image');
+      $extension = $cover->getClientOriginalExtension();
+      Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
+
+      $image = new Image();
+      $image->mime = $cover->getClientMimeType();
+      $image->original_filename = $cover->getClientOriginalName();
+      $image->filename = $cover->getFilename().'.'.$extension;
+      $image->save();
+
+      return $image;
     }
 }

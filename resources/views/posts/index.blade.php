@@ -10,7 +10,7 @@
 
 @section('body')
 
-<div class="container m-5">
+<div class="container m-auto">
       <div class="container justify-content">
           <table class="table table-primary text-center">
             <thead class="thead-dark">
@@ -20,6 +20,7 @@
                   <th scope="col" class="align-middle h5">Slug</th>
                   <th scope="col" class="align-middle h5">Description</th>
                   <th scope="col" class="align-middle h5">category</th>
+                  <th scope="col" class="align-middle h5">Image</th>
                   <th scope="col" class="align-middle h5">User Name</th>
                   <th scope="col" class="align-middle h5">Created At</th>
                   <th scope="col" class="align-middle h5" colspan="3">Actions</th>
@@ -33,6 +34,11 @@
                   <td class="align-middle">{{ $post->slug }}</td>
                   <td class="align-middle">{{ $post->description }}</td>
                   <td class="align-middle">{{ $post->category}}</td>
+                  @if ($post->image)
+                  <td class="align-middle"><img src="{{url('uploads/'.$post->image->filename)}}" width="100" alt="mdb logo"></td>
+                  @else
+                  <td class="align-middle"><img src="https://previews.123rf.com/images/pavelstasevich/pavelstasevich1811/pavelstasevich181101028/112815904-no-image-available-icon-flat-vector-illustration.jpg" width="100" alt="mdb logo"></td>
+                  @endif
                   <td class="align-middle">{{ $post->user->name}}</td>
                   <td class="align-middle">{{ $post->created_at}}</td>
 

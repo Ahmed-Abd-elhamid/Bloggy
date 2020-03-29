@@ -108,7 +108,7 @@ body {
 
 .crumbs-area{
     background: url(../img/bg/slider-bg.jpg) center center/cover no-repeat;
-    height: 540px;
+    height: 620px;
     position: relative;
     display: flex;
     align-items: center;
@@ -122,7 +122,7 @@ body {
     top: 0;
     height: 100%;
     width: 100%;
-    background: rgba(177, 177, 177, 0.85);
+    background: rgba(177, 177, 177, 0.5);
 }
 .crumbs-header{}
 .crumbs-header p{
@@ -159,109 +159,8 @@ body {
  * END Crumbs Area
  *=============================================*/
 
-/*=============================================
- * 4. Counter Box
- *=============================================*/
-
- .counter-box{
-    position: relative;
-    margin-top: -62px;
-    margin-bottom: 90px;
- }
- .counter-box-container{
-    background: #fff;
-    overflow: hidden;
-    padding: 80px 0px;
-    text-align: center;
-    border-radius: 3px;
-    box-shadow: 0px 0px 19px rgba(0,0,0,0.06);
- }
- .counter-item{}
- .counter-item b.counter-up{
-    display: block;
-    font-size: 50px;
-    font-weight: 900;
-    color: #444;
-    line-height: 48px;
-    margin-bottom: 13px;
- }
- .counter-item span{
-    display: block;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0;
-    font-weight: 600;
-    color: #555;
- }
-
-
- /*=============================================
- * END Counter Box
- *=============================================*/
-
- /*=============================================
- * 5. demo-area
- *=============================================*/
-
- .demo-area{}
- .demo-item{
-    box-shadow: 0px 0px 13px rgba(0,0,0,0.2);
-    margin-bottom: 50px;
- }
- .demo-item a{
-    display: block;
- }
- .thumb-area{
-    position: relative;
- }
- .demo-item a img{
-    max-width: 100%;
-    display: block;
- }
- .demo-title{
-    min-height: 80px;
-    display: flex;
-    background: #f3f3f3;
- }
- .thumb-area a.lets-view {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    opacity: 0;
-    visibility: hidden;
-    background: rgba(242, 99, 103, 0.87);
-}
- .thumb-area:hover a.lets-view{
-    opacity: 1;
-    visibility: visible;
- }
- .thumb-area a.lets-view i{
-    margin: auto;
-    font-size: 31px;
-    color: #fff;
- }
- .demo-title h2{
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0;
-    margin: auto;
-    color: #f16266;
-    font-weight: 400;
-    font-family: monospace;
-    cursor: default;
- }
- .{}
- .{}
-
- /*=============================================
- * END demo-area
- *=============================================*/
-
  .footer-area {
-    background: #f9f9f9;
+    background: #002b82;
     padding: 70px 0px;
 }
 
@@ -273,7 +172,7 @@ body {
 .footer-content{}
 
 .footer-content h2{
-    color: #444;
+    color: white;
     text-transform: uppercase;
     margin-bottom: 60px;
 }
@@ -282,7 +181,7 @@ body {
 }
 
 .copy-right {
-    color: #f26367;
+    color: #ff0044;
     letter-spacing: 0.05em;
     font-size: 17px;
 }

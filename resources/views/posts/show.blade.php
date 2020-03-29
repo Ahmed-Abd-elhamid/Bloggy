@@ -16,8 +16,13 @@
         <div class="card-body">
         <h2 class="card-title border border-danger bg-danger">{{$post->title}}</h2>
           <hr>
-          <p class="card-text">{{$post->description}}</p>
+          @if ($post->image)
+          <p class="card-text"><img src="{{url('uploads/'.$post->image->filename)}}" width="600" alt="mdb logo"></p>
+          @else
+          <p class="card-text"><img src="https://previews.123rf.com/images/pavelstasevich/pavelstasevich1811/pavelstasevich181101028/112815904-no-image-available-icon-flat-vector-illustration.jpg" width="600" alt="mdb logo"></p>
+          @endif
           <p><b>Category:</b> {{$post->category}} | <b>Author:</b> {{$post->user->name}}</p>
+          <p class="card-text">{{$post->description}}</p>
 
         </div>
       </div>
