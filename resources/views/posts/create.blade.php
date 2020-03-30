@@ -13,16 +13,16 @@
 <form method="POST" action="{{route('posts.store')}}" enctype="multipart/form-data">
   {{ csrf_field() }}
     <div class="form-group">
-      <label >Title</label>
+      <h3 >Title</h3>
       <input name="title" type="text" class="form-control" aria-describedby="emailHelp">
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Description</label>
+      <h3 for="exampleInputPassword1">Description</h3>
       <textarea name="description" class="form-control"></textarea>
     </div>
 
     <div class="form-group">
-      <label for="exampleInputPassword1">Categories</label>
+      <h3 for="exampleInputPassword1">Category</h3>
       <br>
           <input type="radio" name="category" value="art"> Art
           <input type="radio" name="category" value="social"> Social
@@ -30,7 +30,7 @@
     </div>
 
     <div class="form-group">
-      <label for="exampleInputPassword1">Users</label>
+      <h3 for="exampleInputPassword1">Users</h3>
       <select name="user_id" class="form-control">
         @foreach($users as $user)
           <option value="{{$user->id}}">{{$user->name}}</option>
@@ -39,11 +39,9 @@
     </div>
 
     <div class="form-group">
-      <label for="exampleInputPassword1">Image</label>
+      <h3 for="exampleInputPassword1">Image</h3>
       <input type="file" class="form-control" name="image"/>
     </div>
-
-
 
     <button type="submit" class="btn btn-primary">Post</button>
   </form>
